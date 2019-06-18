@@ -53,7 +53,6 @@ public class BinaryGap {
             }
         }
 
-//TODO                OPTIMISE
 //TODO                USE LAMBAS?
 
         return max;
