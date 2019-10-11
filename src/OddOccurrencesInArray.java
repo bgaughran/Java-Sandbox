@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OddOccurrencesInArray {
-    static List<Integer> dataList = new LinkedList<>();
+    static List<Integer> dataList = new ArrayList<>();
 
 
     /**
@@ -19,9 +22,9 @@ public class OddOccurrencesInArray {
 
         while (weHaveUnprocessedData()) {
 
-            value =  dataList.get(0);
+            value = dataList.get(0);
 
-            if (dataList.size()==1)  {
+            if (dataList.size() == 1) {
                 break;
             }
 
@@ -37,15 +40,22 @@ public class OddOccurrencesInArray {
 
     }
 
-     static boolean weHaveUnprocessedData() {
+    static boolean weHaveUnprocessedData() {
         return dataList.size() >= 1;
     }
 
     static void setList(int[] data) {
         dataList.clear();
+
+//        dataList = Arrays.stream(data)
+//                .boxed()
+//                .collect(Collectors.toList());
+
         for (int i : data) {
             dataList.add(i);
         }
+
+        System.out.println("Added");
     }
 
 }
