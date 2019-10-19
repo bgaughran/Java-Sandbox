@@ -4,11 +4,20 @@ import java.util.List;
 class CyclicRotation {
     int[] rotate(int[] original, int rotations) {
 
+        if (rotations < 1){
+            return original;
+        }
+
+        if (original.length < 1){
+            return original;
+        }
+
         //create blank array
         List<Integer> rotated = new ArrayList<>();
 
         //create blank array of originals
         List<Integer> originalList = new ArrayList<>();
+
         for (int i : original) {
             originalList.add(i);
         }
@@ -18,9 +27,10 @@ class CyclicRotation {
             rotated.clear();
 
             //remove last item from original to new
-            Integer lastItem = originalList.get(originalList.size() - 1);
+            int lastIndex = originalList.size() - 1;
+            Integer lastItem = originalList.get(lastIndex);
             rotated.add(lastItem);
-            originalList.remove(lastItem);
+            originalList.remove(lastIndex);
 
             //add rest of items from old to new
             rotated.addAll(originalList);

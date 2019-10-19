@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class CyclicRotationTest {
@@ -11,6 +12,12 @@ class CyclicRotationTest {
     @BeforeEach
     void beforeEach(){
         cyclicRotation = new CyclicRotation();
+    }
+
+    @Test
+    void rotate0(){
+        int[] rotated = cyclicRotation.rotate(new int[]{3, 8, 9, 7, 6}, 1);
+        assertArrayEquals(new int[]{6, 3, 8, 9, 7}, rotated);
     }
 
     @Test
@@ -31,6 +38,29 @@ class CyclicRotationTest {
         assertArrayEquals(new int[]{3, 8, 9, 7, 6}, rotated);
     }
 
-//    cater for N or K to be 0/1
+    @Test
+    void rotate4(){
+        int[] rotated = cyclicRotation.rotate(new int[]{3, 8, 9, 7, 6}, 5);
+        assertArrayEquals(new int[]{3, 8, 9, 7, 6}, rotated);
+    }
+
+    @Test
+    void rotate5(){
+        int[] rotated = cyclicRotation.rotate(new int[]{1, 2, 3, 5, 1}, 2);
+        assertEquals(5, rotated.length);
+        assertArrayEquals(new int[]{5, 1, 1, 2, 3}, rotated);
+    }
+
+    @Test
+    void rotateZeroTimes(){
+        int[] rotated = cyclicRotation.rotate(new int[]{3, 8, 9, 7, 6}, 0);
+        assertArrayEquals(new int[]{3, 8, 9, 7, 6}, rotated);
+    }
+
+    @Test
+    void emptyArray(){
+        int[] rotated = cyclicRotation.rotate(new int[]{}, 1);
+        assertArrayEquals(new int[]{}, rotated);
+    }
 
 }
