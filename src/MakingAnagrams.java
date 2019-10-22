@@ -1,6 +1,8 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MakingAnagrams {
@@ -16,28 +18,31 @@ public class MakingAnagrams {
         }
 
         deletions += calculateDeletions(string1, string2);
-        deletions += calculateDeletions(string2, string1);
 
         return deletions;
 
     }
 
-    private static int calculateDeletions(String stringBuilder1, String stringBuilder2) {
-        int deletions = 0;
-        for (int i = 0; i < stringBuilder1.length(); i++) {
-            boolean matchFound = false;
-            for (int j = 0; j < stringBuilder2.length(); j++) {
+    private static int calculateDeletions(String string1, String string2) {
+        int string1Deletions = 0;
+        List<Integer> string2MatchIndexes = new ArrayList<>();
 
-                if (stringBuilder1.charAt(i) == stringBuilder2.charAt(j)) {
+        for (int i = 0; i < string1.length(); i++) {
+            boolean matchFound = false;
+            for (int j = 0; j < string2.length(); j++) {
+
+                if (string1.charAt(i) == string2.charAt(j)
+                    && !string2MatchIndexes.contains(j)) {
                     matchFound = true;
+                    string2MatchIndexes.add(j);
                     break;//found a match, no need to delete
                 }
             }
             if (!matchFound) {
-                deletions++;
+                string1Deletions++;
             }
         }
-        return deletions;
+        return string1Deletions + string2.length() - string2MatchIndexes.size();
     }
 
     public static void main(String[] args) throws IOException {

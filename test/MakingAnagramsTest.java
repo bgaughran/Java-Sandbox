@@ -13,25 +13,34 @@ public class MakingAnagramsTest {
     }
 
     @Test
-    void simpleAnagram2() {
-        int deletions = 26;
-        String string1 = "fcrxzwscanmligyxyvym"; //8
-        String string2 = "jxwtrhvujlmrpdoqbisbwhmgpmeoke";//18
+    void simpleAnagram11() {
+        int deletions = 19;
+        String string1 = "absdjkvuahdakejfnfauhdsaavasdlkj";
+        String string2 = "djfladfhiawasdkjvalskufhafablsdkashlahdfa";
         assertEquals(deletions, MakingAnagrams.makeAnagram(string1, string2));
     }
 
 
     @Test
-    void simpleAnagram4() {
-        int deletions = 46;
-        String string1 = "wertyuiopoiqwertyuiuytrertyuiop"; //30
-        String string2 = "qghffdsasdffghjklq";//16
+    void simpleAnagram111() {
+        int deletions = 4;
+        String string1 = "aaabcd";
+        String string2 = "abbbcd";
+        assertEquals(deletions, MakingAnagrams.makeAnagram(string1, string2));
+    }
+
+
+    @Test
+    void simpleAnagram2() {
+        int deletions = 30;
+        String string1 = "fcrxzwscanmligyxyvym";
+        String string2 = "jxwtrhvujlmrpdoqbisbwhmgpmeoke";
         assertEquals(deletions, MakingAnagrams.makeAnagram(string1, string2));
     }
 
     @Test
     void simpleAnagram3() {
-        int deletions = 2;
+        int deletions = 6;
         String string1 = "aabab";
         String string2 = "baaaeaaae";
         assertEquals(deletions, MakingAnagrams.makeAnagram(string1, string2));
